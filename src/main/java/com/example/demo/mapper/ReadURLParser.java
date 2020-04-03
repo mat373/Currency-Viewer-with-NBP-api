@@ -7,6 +7,7 @@ import com.example.demo.model.table.TableCurrency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -19,7 +20,7 @@ public class ReadURLParser {
         this.restTemplate = restTemplate;
     }
 
-    public Currency getSingleCurrencyFromTable(String url)  {
+    public Currency getSingleCurrencyFromTable(String url) throws HttpClientErrorException.NotFound {
         try{
             ResponseEntity<Currency> currencyResponseEntity = restTemplate.getForEntity(url,  Currency.class);
             return currencyResponseEntity.getBody();

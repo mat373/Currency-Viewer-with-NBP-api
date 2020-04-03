@@ -6,6 +6,8 @@ import com.example.demo.model.currency.CurrencyDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 
 @Service
 public class SingleCurrencyService {
@@ -16,6 +18,7 @@ public class SingleCurrencyService {
     public SingleCurrencyService(CurrenciesManager currenciesManager) {
         this.currenciesManager = currenciesManager;
     }
+
 
     public CurrencyDTO getCurrency(String table, String code, String date){
         return currenciesManager.getCurrency(table, code, date);

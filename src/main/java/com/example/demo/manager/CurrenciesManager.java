@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @NoArgsConstructor
 @Component
@@ -24,9 +22,9 @@ public class CurrenciesManager {
     private static final String GET_TABLE_OF_CURRENCIES = "http://api.nbp.pl/api/exchangerates/tables/"; // + {table}
     private static final String SINGLE_CURRENCY = "http://api.nbp.pl/api/exchangerates/rates/";   // +  {table}/{code}
 
-    private String format = "yyyy-MM-dd";
-    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
 
+
+    private SingleCurrencyMapper singleCurrencyMapper = new SingleCurrencyMapper();
     private ReadURLParser readURLParser;
 
     @Autowired
@@ -45,20 +43,14 @@ public class CurrenciesManager {
         return getTableRates(table);
     }
 
-    public List<String> getNames(String table) {
-        List<TableRates> tableRates = getTableRates(table);
-        List<String> codes = new ArrayList<>();
-        for (TableRates tableRate : tableRates) {
-            codes.add(tableRate.getCurrency());
-        }
-        return codes;
-    }
+
 
 //      ********** ********** ********** ********** SINGLE_CURRENCY ********** ********** ********** **********
 
     public CurrencyDTO getCurrency(String table, String code, String date) {
-            return readCurrency(table, code, date);
-
+        CurrencyDTO currencyDTO =  readCurrency(table, code, date);
+        currencyDTO.setCodesAndNames(getMapOfNamesAndCodes(table));
+        return currencyDTO;
     }
 
     public CurrencyDTO getCurrencyFromTableAWithPeriodOfTime(String table, String code, String startDate, String endDate) {
@@ -69,18 +61,22 @@ public class CurrenciesManager {
     //      ********** ********** ********** ********** SINGLE_CURRENCY PRIVATE METHODS ********** ********** ********** **********
 
     private CurrencyDTO readCurrency(String table, String code, String date) {
-        SingleCurrencyMapper singleCurrencyMapper = new SingleCurrencyMapper();
-        if(date == null){
-            date = LocalDateTime.now().format(dateTimeFormatter);
-        }
         Currency currency = readURLParser.getSingleCurrencyFromTable(SINGLE_CURRENCY + table + "/" + code + "/" + date);
         return singleCurrencyMapper.currencyToDTO(currency);
     }
 
-    private CurrencyDTO readCurrenciesWithDates(String table, String code, String startDate, String  endDate) {
-        SingleCurrencyMapper singleCurrencyMapper = new SingleCurrencyMapper();
+    private CurrencyDTO readCurrenciesWithDates(String table, String code, String startDate, String endDate) {
         Currency currency = readURLParser.getSingleCurrencyFromTable(SINGLE_CURRENCY + table + "/" + code + "/" + startDate + "/" + endDate);
         return singleCurrencyMapper.currencyToDTO(currency);
+    }
+
+    private Map<String, String> getMapOfNamesAndCodes(String table){
+        List<TableRates> tableRates = getTableRates(table);
+        Map<String, String> map = new HashMap<>();
+        for(TableRates rates : tableRates){
+            map.put(rates.getCode(),rates.getCurrency());
+        }
+        return map;
     }
 
 //          ********** ********** ********** ********** TABLE PRIVATE METHODS ********** ********** ********** **********
