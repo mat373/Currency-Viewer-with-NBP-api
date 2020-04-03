@@ -23,25 +23,20 @@ NBP ExchangeRatesApplication (in progress)
 
 Run application and go to view in browser: **localhost:8080** or try in Postman.
 
-24.03 - version 1.3
+04.04 - version 1.4 (src update)
 ------------
 ##### Version with thymeleaf view allows to check the exchange rate of a single currency and check the table (a or b) of currencies. So far the version in Postman is slightly different and gives you the option of checking a single currency by date or period of dates #####
 
 in Postman (localhost:8080):
 
-**Single Currency from today (table "A" only) : /api/{code}**</br>
+**Single Currency from today (table "A" only) : /api/{table}/{code}/{date}**</br>
 Examples:</br>
-• /api/usd ->>> Dollar USA </br>
-• /api/eur ->>> Euro</br>
-• /api/gbp ->>> Pound UK</br>
+• /api/a/usd/2020-04-04 ->>> Dollar USA </br>
+• /api/a/eur/2020-03-30 ->>> Euro</br>
 
-Date pattern: yyy-MM-dd
+Date pattern: yyyy-MM-dd
 
-**Single Currency from some date (table "A" only) : /api/{code}/{date}**  
+**Single Currency from a certain period of time (table "A" only) : /api/{table}/{code}/{startDate}/{endDate}**  
 
-• /api/usd/2020-03-10 ->>> Dollar USA from March 10, 2020
-
-**Single Currency from a certain period of time (table "A" only) : /api/{code}/{startDate}/{endDate}**  
-
-• /api/usd/2020-03-10/2020-03-20 ->>> Dollar USA from March 10 to March 20 2020
+• /api/a/gbp/2020-03-20/2020-04-04 ->>> Pound UK</br>
 
