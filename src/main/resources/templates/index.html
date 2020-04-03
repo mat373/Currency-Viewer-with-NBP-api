@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exchange Rates</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <header>
+            <h2 class="card-title h2">Exchange Rates Application</h2>
+            <p class="blue-text my-4 font-weight-bold">Application comparing exchange rates</p>
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 pb-2">
+                    <p class="card-text">Application containing information about single currencies and currency
+                        tables</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="pt-2">
+                <a href="a/eur/today" class="btn btn-success btn-lg active">Start</a>
+            </div>
+        </header>
+    </div> <!-- jumbotron -->
+
+   <div class="card">
+       <div class="card-header">
+           Definitions
+       </div>
+       <div class="card-body">
+           <div class="row">
+               <div class="col-sm-4 ">
+                   <p><small><b>Table</b> - type table</small></p>
+                   <p><small><b>No</b> - table number</small></p>
+                   <p><small><b>Effective Date</b> - date of publication</small></p>
+                   <p><small><b>Code</b> - currency code</small></p>
+                   <p><small><b>Country</b> - name of the country</small></p>
+                   <p><small><b>Currency</b> - currency name</small></p>
+               </div>
+               <div class="col-md-auto">
+                   <p><small><b>Trading Date</b> - date of listing (applies to table C)</small></p>
+                   <p><small><b>Bid</b> - converted currency purchase rate (applies to table C)</small></p>
+                   <p><small><b>Ask</b> - converted currency sale rate (applies to table C)</small></p>
+                   <p><small><b>Mid</b> - converted average exchange rate of currency (applies to tables A and B)</small>
+                   <p><small><b>Rate</b> - a list of exchange rates for individual currencies in the table</small></p>
+                   <p><small><b>Symbol</b> - currency symbol (numeric, applies to archival rates)</small></p>
+               </div>
+           </div> <!-- row -->
+       </div>
+   </div>
+
+</div> <!-- container -->
+</body>
+</html>

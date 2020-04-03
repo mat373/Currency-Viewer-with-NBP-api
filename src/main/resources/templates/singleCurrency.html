@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exchange Rates Application</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="jumbotron text-center">
+            <h2 class="card-title h2">Exchange Rates Application</h2>
+            <p class="blue-text my-4 font-weight-bold">Application comparing exchange rates</p>
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 pb-2">
+                    <p class="card-text">Application containing information about single currencies and currency
+                        tables</p>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-primary" href="/">Home</a>
+                    </li>&nbsp;&nbsp;
+                    <li class="nav-item active">
+                        <a class="btn btn-primary" href="/table/a">Table of Currencies</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <hr class="my-4">
+    <div>
+        <form class="form-inline" th:object="${currencyDTO.getCode()}">
+            <h3>Select Currency</h3>&nbsp;
+
+            <label>
+                <select class="form-control">
+                    <option>
+                    </option>
+                </select>
+            </label>
+            &nbsp;&nbsp;
+            <a class="btn btn-secondary"> Show </a>
+
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Effective Date</th>
+                    <th scope="col">Mid</th>
+                </tr>
+                </thead>
+                <tr th:object="${currencyDTO}" th:each="rates: ${currencyDTO.getRates()}">
+                    <td th:text="${currencyDTO.getCurrency()}"></td>
+                    <td th:text="${currencyDTO.getCode()}"></td>
+                    <td th:text="${rates.getNo()}"></td>
+                    <td th:text="${rates.getEffectiveDate()}"></td>
+                    <td th:text="${rates.getMid()}"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div> <!--container -->
+</body>
+</html>
+
+
+<!--                    <form class="form-inline my-2 my-lg-0">-->
+<!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--                    </form>-->

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exchange Rates</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="jumbotron text-center">
+            <h2 class="card-title h2">Exchange Rates Application</h2>
+            <p class="blue-text my-4 font-weight-bold">Application comparing exchange rates</p>
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 pb-2">
+                    <p class="card-text">Application containing information about single currencies and currency
+                        tables</p>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-primary" href="/">Home</a>
+                    </li>&nbsp;&nbsp;
+                    <li class="nav-item active">
+                        <a class="btn btn-primary" href="/a/usd/today">Single Currency </a>
+                    </li>&nbsp;&nbsp;
+                </ul>
+            </div>
+        </nav>
+    </header> <!-- header -->
+    <hr class="my-4">
+    <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="btn btn-danger" href="/table/a">Table A</a>
+                </li>&nbsp;&nbsp;
+                <li class="nav-item active">
+                    <a class="btn btn-danger" href="/table/b">Table B</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Table</th>
+            <th scope="col">No</th>
+            <th scope="col">Effective Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${tableCurrencyDTO.getTable()}"></td>
+            <td th:text="${tableCurrencyDTO.getNo()}"></td>
+            <td th:text="${tableCurrencyDTO.getEffectiveDate()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Currency</th>
+            <th scope="col">Code</th>
+            <th scope="col">Mid</th>
+        </tr>
+        </thead>
+        <tr th:object="${ratesList}" th:each="rates: ${ratesList}">
+            <td th:text="${rates.getCurrency()}"></td>
+            <td th:text="${rates.getCode()}"></td>
+            <td th:text="${rates.getMid()}"></td>
+        </tr>
+    </table>
+</div> <!-- container -->
+</body>
+</html>
+
+
+
