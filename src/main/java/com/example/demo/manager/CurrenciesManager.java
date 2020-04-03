@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class CurrenciesManager {
 
     private static final String GET_TABLE_OF_CURRENCIES = "http://api.nbp.pl/api/exchangerates/tables/"; // + {table}
     private static final String SINGLE_CURRENCY = "http://api.nbp.pl/api/exchangerates/rates/";   // +  {table}/{code}
+
+    private String format = "yyyy-MM-dd";
+    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
 
     private ReadURLParser readURLParser;
 
@@ -65,6 +70,9 @@ public class CurrenciesManager {
 
     private CurrencyDTO readCurrency(String table, String code, String date) {
         SingleCurrencyMapper singleCurrencyMapper = new SingleCurrencyMapper();
+        if(date == null){
+            date = LocalDateTime.now().format(dateTimeFormatter);
+        }
         Currency currency = readURLParser.getSingleCurrencyFromTable(SINGLE_CURRENCY + table + "/" + code + "/" + date);
         return singleCurrencyMapper.currencyToDTO(currency);
     }

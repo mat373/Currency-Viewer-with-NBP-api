@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class SingleCurrencyController {
@@ -25,12 +26,9 @@ public class SingleCurrencyController {
     @GetMapping("/{table}/{code}/{date}")
     public String getCurrency(@PathVariable(name = "code") String code,
                               @PathVariable(name = "table") String table,
-                              @PathVariable(required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") String date,
+                              @PathVariable(required = false) String date,
                               Model model) {
 
-        if(date == null) {
-            date = LocalDateTime.now().toString();
-        }
         CurrencyDTO currencyDTO = singleCurrencyService.getCurrency(table, code, date);
 
         model.addAttribute("currencyDTO", currencyDTO);
