@@ -5,7 +5,7 @@ import com.example.demo.model.currency.CurrencyDTO;
 
 public class SingleCurrencyMapper {
 
-    public CurrencyDTO currencyToDTO(Currency currency){
+    public CurrencyDTO currencyToDTO(Currency currency) {
         CurrencyDTO dto = new CurrencyDTO();
         dto.setTable(currency.getTable());
         dto.setCurrency(currency.getCurrency());

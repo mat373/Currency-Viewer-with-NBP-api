@@ -24,7 +24,7 @@ public class TableCurrenciesController {
     }
 
     @GetMapping("/{table}")
-    public String getTable(@PathVariable String table, Model model){
+    public String getTable(@PathVariable String table, Model model) {
         TableCurrencyDTO tableCurrencyDTO = tableOfCurrenciesService.getTableOfCurrencies(table);
         List<TableRates> ratesList = tableOfCurrenciesService.getTableRates(table);
         model.addAttribute("tableCurrencyDTO", tableCurrencyDTO);

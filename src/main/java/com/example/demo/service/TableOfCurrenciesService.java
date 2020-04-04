@@ -19,11 +19,11 @@ public class TableOfCurrenciesService {
     }
 
 
-    public TableCurrencyDTO getTableOfCurrencies(String table){
+    public TableCurrencyDTO getTableOfCurrencies(String table) {
         return currenciesManager.getEntireTable(table);
     }
 
-    public List<TableRates> getTableRates(String table){
+    public List<TableRates> getTableRates(String table) {
         return currenciesManager.getRates(table);
     }
 

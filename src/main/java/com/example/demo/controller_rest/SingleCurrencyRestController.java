@@ -29,7 +29,6 @@ public class SingleCurrencyRestController {
     }
 
 
-
     @GetMapping("/{table}/{code}/{date}")
     public ResponseEntity<CurrencyDTO> getSingleCurrencyByDate(@PathVariable String code,
                                                                @PathVariable(name = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") String strDate,
@@ -54,17 +53,17 @@ public class SingleCurrencyRestController {
     public ResponseEntity<CurrencyDTO> getCurrenciesWithPeriodOfDate(@PathVariable String code,
                                                                      @PathVariable(name = "startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String startDate,
                                                                      @PathVariable(name = "endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") String endDate,
-                                                                     @PathVariable String table){
-        try{
+                                                                     @PathVariable String table) {
+        try {
             Date start = new SimpleDateFormat(format).parse(startDate);
             Date end = new SimpleDateFormat(format).parse(endDate);
-            if (start.after(today) || end.after(today) || start.after(end)){
+            if (start.after(today) || end.after(today) || start.after(end)) {
                 throw new DateTimeException("Date cannot be after " + today + " or start date cannot be after end date");
             }
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (code.isEmpty()){
+        if (code.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         CurrencyDTO currency = singleCurrencyService.getCurrencyWithPeriodOTime(table, code, startDate, endDate);

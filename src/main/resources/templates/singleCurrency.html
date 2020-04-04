@@ -27,22 +27,23 @@
 
     </header>
 
-    <a class="btn btn-danger" href="/currency?table=b">Table B</a>
-    <a class="btn btn-danger" href="/currency?table=a">Table A</a>
+    <a class="btn btn-danger" href="/b/afn/last">Table B</a>
+    <a class="btn btn-danger" href="/a/eur/last">Table A</a>
 
     <br>
     <br>
     <form th:object="${currencyDTO}">
-
         <h3>Select Currency</h3>&nbsp;
         <label class="form-inline">
             <select class="form-control">
                 <option th:each="m : ${currencyDTO.getCodesAndNames()}">
-                    <h4 th:text="${m.value}" th:selected="${m.value}"></h4>
+                    <h4 th:text="${m.value}"></h4>
                 </option>
             </select>
             &nbsp;&nbsp;
+            <a class="btn btn-secondary">Show</a>
         </label>
+
     </form>
     &nbsp;&nbsp;
     <br>

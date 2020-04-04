@@ -21,19 +21,19 @@ public class ReadURLParser {
     }
 
     public Currency getSingleCurrencyFromTable(String url) throws HttpClientErrorException.NotFound {
-        try{
-            ResponseEntity<Currency> currencyResponseEntity = restTemplate.getForEntity(url,  Currency.class);
+        try {
+            ResponseEntity<Currency> currencyResponseEntity = restTemplate.getForEntity(url, Currency.class);
             return currencyResponseEntity.getBody();
-        }catch(NbpApiClientException e) {
+        } catch (NbpApiClientException e) {
             throw new NbpApiClientException();
         }
     }
 
-    public TableCurrency[] getTableAOfCurrency(String url){
+    public TableCurrency[] getTableAOfCurrency(String url) {
         try {
             ResponseEntity<TableCurrency[]> tableCurrencyResponseEntity = restTemplate.getForEntity(url, TableCurrency[].class);
             return tableCurrencyResponseEntity.getBody();
-        }catch (NbpApiClientException e){
+        } catch (NbpApiClientException e) {
             throw new NbpApiClientException();
         }
     }

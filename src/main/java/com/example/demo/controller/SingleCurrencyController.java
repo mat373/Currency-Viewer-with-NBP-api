@@ -24,18 +24,16 @@ public class SingleCurrencyController {
         this.singleCurrencyService = singleCurrencyService;
     }
 
-    @RequestMapping(value = "/currency")
-    public String getCurrency(@RequestParam(value = "code", defaultValue = "eur") String code,
-                              @RequestParam(value = "table", defaultValue = "a") String table,
-                              @RequestParam(value = "date", defaultValue = "last", required = false) String date,
-                              Model model) {
-        if (date == null)
+    @GetMapping("/{table}/{code}/{date}")
+    public String getCurrency(@PathVariable String table, @PathVariable String code, @PathVariable String date, Model model){
+        if (date == null){
             date = LocalDate.now().format(dateTimeFormatter);
-
-        CurrencyDTO currencyDTO = singleCurrencyService.getCurrency(table, code, date);
+        }
+        CurrencyDTO currencyDTO = singleCurrencyService.getCurrency(table,code,date);
 
         model.addAttribute("currencyDTO", currencyDTO);
-
         return "singleCurrency";
+
     }
+
 }

@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @NoArgsConstructor
@@ -21,7 +20,6 @@ public class CurrenciesManager {
 
     private static final String GET_TABLE_OF_CURRENCIES = "http://api.nbp.pl/api/exchangerates/tables/"; // + {table}
     private static final String SINGLE_CURRENCY = "http://api.nbp.pl/api/exchangerates/rates/";   // +  {table}/{code}
-
 
 
     private SingleCurrencyMapper singleCurrencyMapper = new SingleCurrencyMapper();
@@ -44,11 +42,10 @@ public class CurrenciesManager {
     }
 
 
-
 //      ********** ********** ********** ********** SINGLE_CURRENCY ********** ********** ********** **********
 
     public CurrencyDTO getCurrency(String table, String code, String date) {
-        CurrencyDTO currencyDTO =  readCurrency(table, code, date);
+        CurrencyDTO currencyDTO = readCurrency(table, code, date);
         currencyDTO.setCodesAndNames(getMapOfNamesAndCodes(table));
         return currencyDTO;
     }
@@ -70,11 +67,11 @@ public class CurrenciesManager {
         return singleCurrencyMapper.currencyToDTO(currency);
     }
 
-    private Map<String, String> getMapOfNamesAndCodes(String table){
+    private Map<String, String> getMapOfNamesAndCodes(String table) {
         List<TableRates> tableRates = getTableRates(table);
         Map<String, String> map = new HashMap<>();
-        for(TableRates rates : tableRates){
-            map.put(rates.getCode(),rates.getCurrency());
+        for (TableRates rates : tableRates) {
+            map.put(rates.getCode(), rates.getCurrency());
         }
         return map;
     }

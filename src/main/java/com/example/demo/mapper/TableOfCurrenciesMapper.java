@@ -22,7 +22,7 @@ public class TableOfCurrenciesMapper {
     }
 
 
-    private List<TableCurrency> parseToList(TableCurrency[] tableCurrencies){
+    private List<TableCurrency> parseToList(TableCurrency[] tableCurrencies) {
         return Arrays.asList(Objects.requireNonNull(tableCurrencies));
     }
 }

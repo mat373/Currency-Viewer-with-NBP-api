@@ -20,11 +20,11 @@ public class SingleCurrencyService {
     }
 
 
-    public CurrencyDTO getCurrency(String table, String code, String date){
+    public CurrencyDTO getCurrency(String table, String code, String date) {
         return currenciesManager.getCurrency(table, code, date);
     }
 
-    public CurrencyDTO getCurrencyWithPeriodOTime(String table, String code, String startDate, String endDate){
+    public CurrencyDTO getCurrencyWithPeriodOTime(String table, String code, String startDate, String endDate) {
         return currenciesManager.getCurrencyFromTableAWithPeriodOfTime(table, code, startDate, endDate);
     }
 }
