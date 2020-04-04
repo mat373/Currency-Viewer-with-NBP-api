@@ -19,7 +19,6 @@ public class SingleCurrencyService {
         this.currenciesManager = currenciesManager;
     }
 
-
     public CurrencyDTO getCurrency(String table, String code, String date) {
         return currenciesManager.getCurrency(table, code, date);
     }

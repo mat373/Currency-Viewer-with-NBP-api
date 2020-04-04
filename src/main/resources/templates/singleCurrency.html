@@ -33,17 +33,22 @@
     <br>
     <br>
     <form th:object="${currencyDTO}">
-        <h3>Select Currency</h3>&nbsp;
+        <h3>Select Currency</h3>
         <label class="form-inline">
+            <a class="btn btn-secondary" href="/a/eur/last">EURO</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/gbp/last">FUNT</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/usd/last">DOLAR AM.</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/huf/last">FORINT</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/chf/last">FRANK</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/UAH/last">HRYWNA</a>&nbsp;&nbsp;
+            <a class="btn btn-secondary" href="/a/rub/last">RUBEL</a>&nbsp;&nbsp;
             <select class="form-control">
                 <option th:each="m : ${currencyDTO.getCodesAndNames()}">
-                    <h4 th:text="${m.value}"></h4>
+                    <h4 th:text="${m.value + '  ' + m.key}"></h4>
                 </option>
             </select>
             &nbsp;&nbsp;
-            <a class="btn btn-secondary">Show</a>
         </label>
-
     </form>
     &nbsp;&nbsp;
     <br>
