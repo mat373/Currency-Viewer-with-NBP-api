@@ -29,14 +29,14 @@ Run application and go to view in browser: **localhost:8080** or try in Postman.
 
 in Postman (localhost:8080):
 
-**Single Currency from today (table "A" only) : /api/{table}/{code}/{date}**</br>
+**Single Currency from today  : /api/{table}/{code}/{date}**</br>
 Examples:</br>
 • /api/a/usd/2020-04-04 ->>> Dollar USA </br>
 • /api/a/eur/2020-03-30 ->>> Euro</br>
 
 Date pattern: yyyy-MM-dd
 
-**Single Currency from a certain period of time (table "A" only) : /api/{table}/{code}/{startDate}/{endDate}**  
+**Single Currency from a certain period of time : /api/{table}/{code}/{startDate}/{endDate}**  
 
 • /api/a/gbp/2020-03-20/2020-04-04 ->>> Pound UK</br>
 
