@@ -26,10 +26,6 @@
         </div>
 
     </header>
-
-    <a class="btn btn-danger" href="/b/afn/last">Table B</a>
-    <a class="btn btn-danger" href="/a/eur/last">Table A</a>
-
     <br>
     <br>
     <form th:object="${currencyDTO}">
@@ -42,11 +38,6 @@
             <a class="btn btn-secondary" href="/a/chf/last">FRANK</a>&nbsp;&nbsp;
             <a class="btn btn-secondary" href="/a/UAH/last">HRYWNA</a>&nbsp;&nbsp;
             <a class="btn btn-secondary" href="/a/rub/last">RUBEL</a>&nbsp;&nbsp;
-            <select class="form-control">
-                <option th:each="m : ${currencyDTO.getCodesAndNames()}">
-                    <h4 th:text="${m.value + '  ' + m.key}"></h4>
-                </option>
-            </select>
             &nbsp;&nbsp;
         </label>
     </form>
