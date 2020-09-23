@@ -21,7 +21,7 @@ NBP ExchangeRatesApplication (in progress)
 
 Run application and go to view in browser: **localhost:8080** or try in Postman.
 
-04.04 - version 1.4 (src update)
+version 1.4 (src update)
 ------------
 ##### Version with thymeleaf view allows to check the exchange rate of a single currency and check the table (a or b) of currencies. So far the version in Postman is slightly different and gives you the option of checking a single currency by date or period of dates #####
 
