@@ -30,16 +30,37 @@ version 1.4 (src update)
 
 in Postman (localhost:8080):
 
-* Single Currency from today (table "A" only) : /api/{table}/{code}/{date}**
-* Single Currency from today  : /api/{table}/{code}/{date}**
+* Single Currency from today (table "A" only) : 
+
+```sh
+/api/{table}/{code}/{date}**
+```
+
+* Single Currency from today  : 
+
+```sh
+/api/{table}/{code}/{date}**
+```
+
 Examples:
 • /api/a/usd/2020-04-04 ->>> Dollar USA 
 • /api/a/eur/2020-03-30 ->>> Euro
 
 Date pattern: yyyy-MM-dd
 
-* Single Currency from a certain period of time (table "A" only) : /api/{table}/{code}/{startDate}/{endDate}**  
-* Single Currency from a certain period of time : /api/{table}/{code}/{startDate}/{endDate}**  
+* Single Currency from a certain period of time (table "A" only) : 
+
+```sh
+/api/{table}/{code}/{startDate}/{endDate}**  
+```
+
+* Single Currency from a certain period of time : 
+
+```sh
+/api/{table}/{code}/{startDate}/{endDate}**  
+```
+
+
  Example:
 • /api/a/gbp/2020-03-20/2020-04-04 ->>> Pound UK
 
