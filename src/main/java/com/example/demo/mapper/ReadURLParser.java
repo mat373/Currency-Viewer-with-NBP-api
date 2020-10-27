@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class ReadURLParser {
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public ReadURLParser(RestTemplate restTemplate) {

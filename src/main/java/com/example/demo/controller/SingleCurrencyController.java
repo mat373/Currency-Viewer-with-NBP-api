@@ -14,10 +14,10 @@ import java.time.format.DateTimeFormatter;
 public class SingleCurrencyController {
 
 
-    private String format = "yyyy-MM-dd";
-    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
+    private final String format = "yyyy-MM-dd";
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
 
-    private SingleCurrencyService singleCurrencyService;
+    private final SingleCurrencyService singleCurrencyService;
 
     @Autowired
     public SingleCurrencyController(SingleCurrencyService singleCurrencyService) {

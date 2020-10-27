@@ -1,11 +1,11 @@
 package com.example.demo.model.table;
 
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Getter
+
 @NoArgsConstructor
 public class TableRates {
     private String currency;
@@ -14,5 +14,13 @@ public class TableRates {
 
     public BigDecimal getMid() {
         return BigDecimal.valueOf(mid);
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getCode() {
+        return code;
     }
 }

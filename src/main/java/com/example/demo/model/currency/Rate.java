@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 
-@Getter
+
 public class Rate {
     private String no;
     private String effectiveDate;
@@ -12,5 +12,13 @@ public class Rate {
 
     public BigDecimal getMid() {
         return BigDecimal.valueOf(mid);
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public String getEffectiveDate() {
+        return effectiveDate;
     }
 }

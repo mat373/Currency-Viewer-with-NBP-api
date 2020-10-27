@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class TableOfCurrenciesService {
 
-    private CurrenciesManager currenciesManager;
+    private final CurrenciesManager currenciesManager;
 
     @Autowired
     public TableOfCurrenciesService(CurrenciesManager currenciesManager) {
