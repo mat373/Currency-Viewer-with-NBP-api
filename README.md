@@ -1,6 +1,6 @@
 
 # NBP ExchangeRatesApplication 
-Spring application using Spring Boot, Spring Web. The application reads data from the NBP api.
+Java application using Spring Boot. The application reads data from the NBP api.
 
 ------------
 
